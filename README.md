@@ -1,10 +1,15 @@
 # Nightmare-Searcher
 Web parser on nodejs &amp; nightmarejs
 
-# install dependencies
+#### install dependencies
 
+```
 npm i
+```
 
-# start project
 
+#### start project
+
+```
 npm start
+```
