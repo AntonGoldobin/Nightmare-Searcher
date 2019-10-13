@@ -3,13 +3,14 @@ const cheerio = require('cheerio');
 
 
 let pagesData = []
-const generalUrl = 'https://youthstore.ru/c/men/clothes/sweatshirts'
+const generalUrl = 'https://youthstore.ru/'
+const startThemeUrl = 'c/men/clothes/sweatshirts'
 
 
 
 const nightmare = Nightmare({ show: true });
 nightmare
-  .goto(generalUrl)
+  .goto(generalUrl + startThemeUrl)
   .wait(500)
   .evaluate(function () {
     return document.documentElement.outerHTML;
@@ -24,7 +25,7 @@ nightmare
       $("#items-holder li").each((i, elem) => {
         pagesData.push({
           title: $(elem).find('.title').text(),
-          img: $(elem).find('img').eq(0).attr('src'),
+          img: generalUrl + $(elem).find('.image img').attr('src'),
           price: $(elem).find('.price').text(),
           url: generalUrl + $(elem).find('a').attr('href')
         })
